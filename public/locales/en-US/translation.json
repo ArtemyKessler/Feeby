@@ -1,0 +1,9 @@
+{
+  "title": "Report an issue",
+  "labels": {
+    "name": "First and second name (optional)",
+    "phone": "Phone number",
+    "feedback": "Tell us about the problem:",
+    "image": "Attach the photo"
+  }
+}
