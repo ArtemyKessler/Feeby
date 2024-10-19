@@ -19,7 +19,10 @@ i18n
     //   useSuspense: false
     // },
     fallbackLng: 'en-US',
-    debug: true
+    debug: true,
+    backend: {
+      loadPath: '/Feeby/locales/{{lng}}/{{ns}}.json'
+    }
   })
 
 export default i18n
