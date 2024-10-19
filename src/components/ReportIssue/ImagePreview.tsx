@@ -6,26 +6,26 @@ import React, { forwardRef, useImperativeHandle } from 'react'
 import { MuiFileInput } from 'mui-file-input'
 
 import styled from 'styled-components'
+import { useTranslation } from 'react-i18next'
 
 // eslint-disable-next-line react/display-name
 const ImagePreview = forwardRef((props, ref) => {
   const [value, setValue] = React.useState<null | File[]>(null)
+  const { t } = useTranslation()
 
   useImperativeHandle(ref, () => ({
     reset() {
-      console.log('RESET IMAGE')
       setValue(null)
     }
   }))
 
   const handleChange = (newValue: any) => {
-    console.log('newValue', newValue)
     setValue(newValue)
   }
 
   return (
     <StyledPreview>
-      <StyledLabel htmlFor={'images'}>Choose images</StyledLabel>
+      <StyledLabel htmlFor={'images'}>{t('labels.image')}</StyledLabel>
       <MuiFileInput
         id={'images'}
         name={'images'}

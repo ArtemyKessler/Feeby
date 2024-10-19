@@ -1,7 +1,9 @@
 {
-  "title": "Willkommen zu react und react-i18next",
-  "description": {
-    "part1": "Um loszulegen, ändere <1>src/App(DE).js</1> und speichere um neuzuladen.",
-    "part2": "Wechsle die Sprache zwischen deutsch und englisch mit Hilfe der beiden Schalter."
+  "title": "Расскажите нам о проблеме",
+  "labels": {
+    "name": "Имя и Фамилия (опционально)",
+    "phone": "Номер Телефона",
+    "feedback": "Расскажите о проблеме:",
+    "image": "Прикрепите фото"
   }
 }
