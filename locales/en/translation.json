@@ -5,5 +5,9 @@
     "phone": "Phone number",
     "feedback": "Tell us about the problem:",
     "image": "Attach the photo"
+  },
+  "welcomeModal": {
+    "title": "Welcome to Feeby!",
+    "description": "Leave your feedback about city service"
   }
 }
