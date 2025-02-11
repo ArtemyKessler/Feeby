@@ -29,10 +29,7 @@ export const WelcomeModal = ({ open, handleClose }: WelcomeModalProps) => {
             backgroundColor: 'white',
             padding: '20px',
             margin: '20px',
-            borderRadius: '20px',
-            minWidth: '400px',
-            width: '600x',
-            maxWidth: '800px'
+            borderRadius: '20px'
           }}
         >
           <Typography id="modal-modal-title" variant="h6" component="h2">

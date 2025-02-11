@@ -13,10 +13,12 @@ const SubmitButton = (props: ButtonHTMLAttributes<HTMLButtonElement>) => {
 }
 
 const StyledButton = styled.button`
-  background-color: #f5c754;
+  //background-color: #f5c754;
+  background-color: #264653;
   border: none;
   border-radius: 12px;
-  color: #141c24;
+  //color: #141c24;
+  color: #e9c46a;
   font-weight: 700;
   font-size: 16px;
   padding: 16px;
@@ -26,7 +28,8 @@ const StyledButton = styled.button`
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: #f3bd3a;
+    //background-color: #f3bd3a;
+    background-color: #2a9d8f;
   }
 
   &:focus {
