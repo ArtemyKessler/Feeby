@@ -19,18 +19,29 @@ export const WelcomeModal = ({ open, handleClose }: WelcomeModalProps) => {
     >
       <Box
         sx={{
-          backgroundColor: 'white',
-          padding: '20px',
-          margin: '20px',
-          borderRadius: '20px'
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center'
         }}
       >
-        <Typography id="modal-modal-title" variant="h6" component="h2">
-          {t('welcomeModal.title')}
-        </Typography>
-        <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-          {t('welcomeModal.description')}
-        </Typography>
+        <Box
+          sx={{
+            backgroundColor: 'white',
+            padding: '20px',
+            margin: '20px',
+            borderRadius: '20px',
+            minWidth: '400px',
+            width: '600x',
+            maxWidth: '800px'
+          }}
+        >
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            {t('welcomeModal.title')}
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            {t('welcomeModal.description')}
+          </Typography>
+        </Box>
       </Box>
     </Modal>
   )
