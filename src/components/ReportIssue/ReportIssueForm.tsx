@@ -9,6 +9,8 @@ import { useTranslation } from 'react-i18next'
 import axios from 'axios'
 import { WelcomeModal } from '../WelcomeModal/WelcomeModal'
 import { saveIsVisited, selectIsVisited } from '../WelcomeModal/helper'
+import { LanguageSelect } from '../LanguageSelect/LanguageSelect'
+import { Box } from '@mui/material'
 
 interface ReportIssueFormProps {
   // onSubmit: (formData: FormData) => void
@@ -82,6 +84,13 @@ const ReportIssueForm: React.FC<ReportIssueFormProps> = () => {
           ✖
         </button>
       </header>
+      <Box
+        sx={{
+          alignSelf: 'flex-end'
+        }}
+      >
+        <LanguageSelect />
+      </Box>
       <main>
         <FormField label={t('labels.name')} id="name" type="text" />
         <FormField label={t('labels.phone')} id="phone" type="tel" />
