@@ -1,6 +1,7 @@
 {
   "title": "Report an issue",
   "submit": "Submit",
+  "language": "Language",
   "labels": {
     "name": "First and second name (optional)",
     "phone": "Phone number",
