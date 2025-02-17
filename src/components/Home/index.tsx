@@ -4,7 +4,7 @@ export type HomeProps = {
   name?: string
 }
 
-const Home = ({ name = 'React Boilerlate' }: HomeProps) => (
+const Home = ({ name = 'React Boilerplate' }: HomeProps) => (
   <S.Wrapper>
     <svg
       xmlns="http://www.w3.org/2000/svg"

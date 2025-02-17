@@ -110,6 +110,7 @@ const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  padding-bottom: 150px;
 
   .form-header {
     display: flex;
