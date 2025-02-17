@@ -57,6 +57,12 @@ const ReportIssueForm: React.FC<ReportIssueFormProps> = () => {
     }
   }
 
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLFormElement>) => {
+    if (event.key === 'Enter') {
+      event.preventDefault()
+    }
+  }
+
   useEffect(() => {
     if (!selectIsVisited()) {
       handleOpen()
@@ -65,10 +71,11 @@ const ReportIssueForm: React.FC<ReportIssueFormProps> = () => {
   }, [])
 
   return (
-    <StyledForm ref={ref} onSubmit={handleSubmit}>
+    <StyledForm ref={ref} onSubmit={handleSubmit} onKeyDown={handleKeyDown}>
       <WelcomeModal open={open} handleClose={handleClose} />
       <header className="form-header">
         <button
+          type={'button'}
           className={'header-button'}
           onClick={handleOpen}
           title={t('titles.info')}
@@ -77,6 +84,7 @@ const ReportIssueForm: React.FC<ReportIssueFormProps> = () => {
         </button>
         <h1>{t('title')}</h1>
         <button
+          type={'button'}
           className="header-button"
           aria-label="clear form"
           title={t('titles.clear')}
