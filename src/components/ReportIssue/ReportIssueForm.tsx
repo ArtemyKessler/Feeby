@@ -14,18 +14,6 @@ import { WelcomeModal } from '../WelcomeModal/WelcomeModal'
 import { StyledButton } from '../common/buttons/StyledButton'
 import { MiniMap } from '../miniMap/MiniMap'
 
-const validateForm = (formFields: (string | File)[][]) => {
-  let isValid = true
-  formFields.forEach(el => {
-    if (el[0] === 'feedback') {
-      if (el[1] !== 'string' || el[1].length < 10) {
-        isValid = false
-      }
-    }
-  })
-  return isValid
-}
-
 interface Geoposition {
   lat?: number
   long?: number
@@ -47,22 +35,20 @@ const ReportIssueForm = () => {
     // @ts-ignore
     childRef.current?.reset()
 
-    console.log('formData', Array.from(formData.entries()))
-
-    if (validateForm(Array.from(formData.entries()))) {
-      if (latLong.lat && latLong.long) {
-        formData.append('lat', latLong.lat.toString())
-        formData.append('long', latLong.long.toString())
-      }
-      console.log('SENDING')
-      // TODO change to actual back-end url
-      axios({
-        method: 'post',
-        url: 'http://localhost:8000/api/Applications/validate',
-        data: formData,
-        headers: { 'Content-Type': 'multipart/form-data' }
-      })
+    if (latLong.lat && latLong.long) {
+      formData.set('lat', latLong.lat.toString())
+      formData.set('long', latLong.long.toString())
     }
+    console.log('SENDING')
+    console.log('final formData', Array.from(formData.entries()))
+    // TODO change to actual back-end url
+    axios({
+      method: 'post',
+      url: 'http://localhost:8000/api/Applications/validate',
+      data: formData,
+      headers: { 'Content-Type': 'multipart/form-data' }
+    })
+    setLatLong({})
   }
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLFormElement>) => {
@@ -127,7 +113,7 @@ const ReportIssueForm = () => {
           isRequired={true}
         />
         <StyledButton onClick={handleGeopositionClick} type={'button'}>
-          {t('getCoordinates')}
+          {t('getCoordinates')} 🌏
         </StyledButton>
         <Box mt={1}>
           {latLong.lat && latLong.long
