@@ -45,7 +45,9 @@ export const LanguageSelect = () => {
           onChange={handleChange}
         >
           {AVAILABLE_LANGUAGES.map(el => (
-            <MenuItem value={el.code}>{el.name}</MenuItem>
+            <MenuItem value={el.code} key={el.code}>
+              {el.name}
+            </MenuItem>
           ))}
         </Select>
       </FormControl>

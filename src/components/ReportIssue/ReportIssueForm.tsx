@@ -12,6 +12,7 @@ import { useTranslation } from 'react-i18next'
 import axios from 'axios'
 import { WelcomeModal } from '../WelcomeModal/WelcomeModal'
 import { StyledButton } from '../common/buttons/StyledButton'
+import { MiniMap } from '../miniMap/MiniMap'
 
 const validateForm = (formFields: (string | File)[][]) => {
   let isValid = true
@@ -128,9 +129,14 @@ const ReportIssueForm = () => {
         <StyledButton onClick={handleGeopositionClick} type={'button'}>
           {t('getCoordinates')}
         </StyledButton>
+        <Box mt={1}>
+          {latLong.lat && latLong.long
+            ? `lat: ${latLong.lat.toFixed(4)} long: ${latLong.long.toFixed(4)}`
+            : t('coordinatesPlaceholder')}
+        </Box>
         {latLong.lat && latLong.long && (
           <Box mt={1}>
-            lat: {latLong.lat.toFixed(4)} long: {latLong.long.toFixed(4)}
+            <MiniMap lat={latLong.lat} long={latLong.long} />
           </Box>
         )}
         <ImagePreview ref={childRef} />
