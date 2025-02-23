@@ -1,0 +1,21 @@
+{
+  "title": "Raportează o problemă",
+  "submit": "Trimite",
+  "getCoordinates": "Obține coordonatele",
+  "coordinatesPlaceholder": "Coordonatele tale vor fi afișate aici",
+  "language": "Limbă",
+  "labels": {
+    "name": "Nume și prenume (opțional)",
+    "phone": "Număr de telefon",
+    "feedback": "Descrie problema:",
+    "image": "Atașează o fotografie"
+  },
+  "titles": {
+    "clear": "Șterge formularul",
+    "info": "Află mai multe"
+  },
+  "welcomeModal": {
+    "title": "Bine ai venit la Feeby!",
+    "description": "Povestește-ne despre problemele pe care le-ai întâlnit în mediul urban. Serviciul nostru va crea o recenzie pentru serviciile relevante"
+  }
+}

@@ -7,13 +7,15 @@ interface FormFieldProps {
   id: string
   type: string
   placeholder?: string
+  isRequired?: boolean
 }
 
 const FormField: React.FC<FormFieldProps> = ({
   label,
   id,
   type,
-  placeholder
+  placeholder,
+  isRequired
 }) => {
   const InputComponent = type === 'textarea' ? 'textarea' : 'input'
 
@@ -25,6 +27,7 @@ const FormField: React.FC<FormFieldProps> = ({
         name={id}
         type={type !== 'textarea' ? type : undefined}
         placeholder={placeholder}
+        required={isRequired}
       />
     </StyledFieldset>
   )

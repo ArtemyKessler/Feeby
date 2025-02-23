@@ -1,20 +1,17 @@
 import React, { MutableRefObject, useEffect, useRef, useState } from 'react'
 
+import { Box } from '@mui/material'
 import styled from 'styled-components'
 
+import { LanguageSelect } from '../LanguageSelect/LanguageSelect'
+import { saveIsVisited, selectIsVisited } from '../WelcomeModal/helper'
 import FormField from './FormField'
 import ImagePreview from './ImagePreview'
 import SubmitButton from './SubmitButton'
 import { useTranslation } from 'react-i18next'
 import axios from 'axios'
 import { WelcomeModal } from '../WelcomeModal/WelcomeModal'
-import { saveIsVisited, selectIsVisited } from '../WelcomeModal/helper'
-import { LanguageSelect } from '../LanguageSelect/LanguageSelect'
-import { Box } from '@mui/material'
-
-interface ReportIssueFormProps {
-  // onSubmit: (formData: FormData) => void
-}
+import { StyledButton } from '../common/buttons/StyledButton'
 
 const validateForm = (formFields: (string | File)[][]) => {
   let isValid = true
@@ -28,11 +25,17 @@ const validateForm = (formFields: (string | File)[][]) => {
   return isValid
 }
 
-const ReportIssueForm: React.FC<ReportIssueFormProps> = () => {
+interface Geoposition {
+  lat?: number
+  long?: number
+}
+
+const ReportIssueForm = () => {
   const { t } = useTranslation()
   const ref: MutableRefObject<HTMLFormElement | null> = useRef(null)
   const childRef = useRef()
   const [open, setOpen] = useState(false)
+  const [latLong, setLatLong] = useState<Geoposition>({})
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
 
@@ -46,6 +49,10 @@ const ReportIssueForm: React.FC<ReportIssueFormProps> = () => {
     console.log('formData', Array.from(formData.entries()))
 
     if (validateForm(Array.from(formData.entries()))) {
+      if (latLong.lat && latLong.long) {
+        formData.append('lat', latLong.lat.toString())
+        formData.append('long', latLong.long.toString())
+      }
       console.log('SENDING')
       // TODO change to actual back-end url
       axios({
@@ -69,6 +76,16 @@ const ReportIssueForm: React.FC<ReportIssueFormProps> = () => {
       saveIsVisited(true)
     }
   }, [])
+
+  const handleGeopositionClick = () => {
+    navigator.geolocation.getCurrentPosition(position => {
+      let lat = position.coords.latitude
+      let long = position.coords.longitude
+
+      console.log(lat, long)
+      setLatLong({ lat, long })
+    })
+  }
 
   return (
     <StyledForm ref={ref} onSubmit={handleSubmit} onKeyDown={handleKeyDown}>
@@ -102,7 +119,20 @@ const ReportIssueForm: React.FC<ReportIssueFormProps> = () => {
       <main>
         <FormField label={t('labels.name')} id="name" type="text" />
         <FormField label={t('labels.phone')} id="phone" type="tel" />
-        <FormField label={t('labels.feedback')} id="feedback" type="textarea" />
+        <FormField
+          label={t('labels.feedback')}
+          id="feedback"
+          type="textarea"
+          isRequired={true}
+        />
+        <StyledButton onClick={handleGeopositionClick} type={'button'}>
+          {t('button.geoposition')}
+        </StyledButton>
+        {latLong.lat && latLong.long && (
+          <Box mt={1}>
+            lat: {latLong.lat} long: {latLong.long}
+          </Box>
+        )}
         <ImagePreview ref={childRef} />
         <SubmitButton />
       </main>
