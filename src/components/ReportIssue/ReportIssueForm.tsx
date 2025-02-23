@@ -126,11 +126,11 @@ const ReportIssueForm = () => {
           isRequired={true}
         />
         <StyledButton onClick={handleGeopositionClick} type={'button'}>
-          {t('button.geoposition')}
+          {t('getCoordinates')}
         </StyledButton>
         {latLong.lat && latLong.long && (
           <Box mt={1}>
-            lat: {latLong.lat} long: {latLong.long}
+            lat: {latLong.lat.toFixed(4)} long: {latLong.long.toFixed(4)}
           </Box>
         )}
         <ImagePreview ref={childRef} />

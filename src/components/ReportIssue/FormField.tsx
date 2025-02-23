@@ -28,6 +28,7 @@ const FormField: React.FC<FormFieldProps> = ({
         type={type !== 'textarea' ? type : undefined}
         placeholder={placeholder}
         required={isRequired}
+        style={{ resize: 'none' }}
       />
     </StyledFieldset>
   )
