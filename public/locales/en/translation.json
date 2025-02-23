@@ -1,6 +1,7 @@
 {
   "title": "Report an issue",
   "submit": "Submit",
+  "close": "Close",
   "getCoordinates": "Get Coordinates",
   "coordinatesPlaceholder": "Your coordinates will be shown here",
   "language": "Language",
@@ -11,11 +12,15 @@
     "image": "Attach the photo"
   },
   "titles": {
-    "clear": "Очистить форму",
-    "info": "Узнать больше"
+    "clear": "Clear form",
+    "info": "More info"
   },
   "welcomeModal": {
     "title": "Welcome to Feeby!",
     "description": "Tell us about the problems you encountered in the urban environment. Our service will create a review for the relevant services"
+  },
+  "successModal": {
+    "title": "You successfully submitted your feedback!",
+    "description": "Responsible service will check your inquiry anytime soon!"
   }
 }

@@ -13,6 +13,7 @@ import axios from 'axios'
 import { WelcomeModal } from '../WelcomeModal/WelcomeModal'
 import { StyledButton } from '../common/buttons/StyledButton'
 import { MiniMap } from '../miniMap/MiniMap'
+import { SuccessModal } from '../SuccessModal/SuccessModal'
 
 interface Geoposition {
   lat?: number
@@ -24,11 +25,13 @@ const ReportIssueForm = () => {
   const ref: MutableRefObject<HTMLFormElement | null> = useRef(null)
   const childRef = useRef()
   const [open, setOpen] = useState(false)
+  const [successOpen, setSuccessOpen] = useState(false)
   const [latLong, setLatLong] = useState<Geoposition>({})
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
+  const handleSuccessClose = () => setSuccessOpen(false)
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const formData = new FormData(event.currentTarget)
     ref.current?.reset()
@@ -42,14 +45,17 @@ const ReportIssueForm = () => {
     console.log('SENDING')
     console.log('final formData', Array.from(formData.entries()))
     // TODO change to actual back-end url
-    axios({
+    setLatLong({})
+    const res = await axios({
       method: 'post',
       url: 'https://testing--69c09d9c-561f-4d05-b867-d320f85f9c1d.app.getlazy.ai/api/report',
       data: formData,
       headers: { 'Content-Type': 'multipart/form-data' }
       // headers: { 'Content-Type': 'application/json' }
     })
-    setLatLong({})
+    if (res.status >= 200 && res.status < 300) {
+      setSuccessOpen(true)
+    }
   }
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLFormElement>) => {
@@ -78,6 +84,7 @@ const ReportIssueForm = () => {
   return (
     <StyledForm ref={ref} onSubmit={handleSubmit} onKeyDown={handleKeyDown}>
       <WelcomeModal open={open} handleClose={handleClose} />
+      <SuccessModal open={successOpen} handleClose={handleSuccessClose} />
       <header className="form-header">
         <button
           type={'button'}
