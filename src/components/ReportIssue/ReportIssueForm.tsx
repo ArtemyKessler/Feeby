@@ -44,9 +44,10 @@ const ReportIssueForm = () => {
     // TODO change to actual back-end url
     axios({
       method: 'post',
-      url: 'http://localhost:8000/api/Applications/validate',
+      url: 'https://testing--69c09d9c-561f-4d05-b867-d320f85f9c1d.app.getlazy.ai/api/report',
       data: formData,
       headers: { 'Content-Type': 'multipart/form-data' }
+      // headers: { 'Content-Type': 'application/json' }
     })
     setLatLong({})
   }

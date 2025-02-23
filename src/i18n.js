@@ -3,6 +3,8 @@ import i18n from 'i18next'
 import LanguageDetector from 'i18next-browser-languagedetector'
 import Backend from 'i18next-http-backend'
 
+const isDev = import.meta.env.DEV
+
 i18n
   // load translation using http -> see /public/locales
   // learn more: https://github.com/i18next/i18next-http-backend
@@ -21,7 +23,7 @@ i18n
     fallbackLng: 'en-US',
     debug: true,
     backend: {
-      loadPath: '/Feeby/locales/{{lng}}/{{ns}}.json'
+      loadPath: `${!isDev ? '/Feeby' : ''}/locales/{{lng}}/{{ns}}.json`
     }
   })
 
