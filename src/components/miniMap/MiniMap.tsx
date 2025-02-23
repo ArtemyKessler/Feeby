@@ -6,7 +6,7 @@ interface MiniMapProps {
 export const MiniMap = ({ lat, long }: MiniMapProps) => {
   return (
     <iframe
-      width="300"
+      width="100%"
       height="250"
       src={`https://maps.google.com/maps?q=${lat},${long}&hl=en&z=14&output=embed`}
     />
