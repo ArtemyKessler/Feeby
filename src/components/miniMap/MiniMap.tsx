@@ -8,7 +8,7 @@ export const MiniMap = ({ lat, long }: MiniMapProps) => {
     <iframe
       width="300"
       height="250"
-      src={`https://maps.google.com/maps?q=${lat},${long}&hl=es&z=14&output=embed`}
+      src={`https://maps.google.com/maps?q=${lat},${long}&hl=en&z=14&output=embed`}
     />
   )
 }
