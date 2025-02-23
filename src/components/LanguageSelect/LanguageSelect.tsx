@@ -23,7 +23,7 @@ export const AVAILABLE_LANGUAGES = [
 
 export const LanguageSelect = () => {
   const defaultLang = localStorage.getItem('i18nextLng')
-  const [lang, setAge] = React.useState(defaultLang)
+  const [lang, setAge] = React.useState(defaultLang || 'en')
   const { t } = useTranslation()
 
   const handleChange = (event: SelectChangeEvent) => {
