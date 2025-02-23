@@ -1,6 +1,8 @@
 {
   "title": "Report an issue",
   "submit": "Submit",
+  "getCoordinates": "Get Coordinates",
+  "coordinatesPlaceholder": "Your coordinates will be shown here",
   "language": "Language",
   "labels": {
     "name": "First and second name (optional)",
@@ -14,6 +16,6 @@
   },
   "welcomeModal": {
     "title": "Welcome to Feeby!",
-    "description": "Leave your feedback about city service"
+    "description": "Tell us about the problems you encountered in the urban environment. Our service will create a review for the relevant services"
   }
 }
